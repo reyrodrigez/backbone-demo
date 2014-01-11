@@ -53,6 +53,12 @@ define([
              */
             render: function () {
 
+                /* Close any open comment form by clicking cancel */
+                $('.cancel').trigger('click');
+                /* If the confirmation prevents the comment form to get disappeared stop propagation */
+                if ($('.cancel').length>0)
+                    return false;
+
                 var template = $('#form-template').text();
                 var template_vars = {
                     author: this.model.get('author'),
