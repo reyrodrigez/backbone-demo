@@ -82,10 +82,21 @@ var FormView = Backbone.View.extend(
 		
 		/**
 		* Cancel button click handler
+		* Compares author and text values with model data, if any of those changed comfirmation message pops up 
 		* Cleans up form view from DOM
 		* @returns {Boolean} Returns false to stop propagation
 		*/
 		cancel: function () {
+			var $t_el = this.$el
+			,	authorval = $t_el.find('.author').val()
+			,	textval = $t_el.find('.text').val();
+			
+			// compare values with model data
+			if (authorval !== this.model.get('author') || textval !== this.model.get('text')){
+				// if confirmation canceled prevent further execution
+				if(!confirm('All changes will be lost!\nDo you want to continue?'))
+					return false;
+			}
 			// clean up form
 			this.remove();
 			return false;
