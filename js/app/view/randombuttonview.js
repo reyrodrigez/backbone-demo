@@ -33,6 +33,8 @@ define([
                 if (this.collection === undefined) {
                     throw 'NoCollectionDefined';
                 }
+                //pre-render some comments
+                this.createComment();
             },
             
             /**
