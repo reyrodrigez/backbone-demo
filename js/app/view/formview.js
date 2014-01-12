@@ -73,7 +73,8 @@ define([
              * Sets new values from form on model, triggers a success event and cleans up the form
              * @returns {Boolean} Returns false to stop propagation
              */
-            submit: function () {
+            submit: function (e) {
+                e.preventDefault();
                 // set values from form on model
                 this.model.set({
                     author: this.$el.find('.author').val(),

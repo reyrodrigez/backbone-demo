@@ -23,28 +23,37 @@ define([
              * Subscribe to collection 'reset' and 'add' events
              */
             initialize: function () {
-                this.collection.on('add reset', this.render, this);
+                this.collection.on('reset', this.render, this);
+                this.collection.on('add', this.add, this);
             },
             
             /**
-             * Render comments using CommentView instances for each model in the collection.
+             * Render a list of comments by interate over the collection models and call the add function
              * @returns {CommentlistView} Returns the view instance itself, to allow chaining view commands.
              */
             render: function () {
+                var _this = this;
                 // first clean up the container
                 this.$el.empty();
                 
-                // iterate over models in collection and render comments using the CommentView view class
-                this.collection.each(function (item) {
-                    // create new CommentView instance
-                    var commentview = new CommentView({
-                        model: item
-                    });
-                    
-                    // append rendered CommentView instance to CommentlistViews container
-                    this.$el.append(commentview.render().$el);
+                // iterate over models in collection models and render comments using the add method
+                _.each(this.collection.models, function (item) {
+                    _this.add(item);
                 }, this);
-                
+                    
+                return this;
+            },
+            /**
+             * Render a single comment using CommentView. 
+             * @returns {CommentlistView} Returns the view instance itself, to allow chaining view commands.
+             */
+            add: function(item){
+                var commentview = new CommentView({
+                    model: item
+                });
+
+                this.$el.append(commentview.render().el);
+
                 return this;
             }
         }
