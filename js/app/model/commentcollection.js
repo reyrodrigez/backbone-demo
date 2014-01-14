@@ -9,11 +9,11 @@
 
 /* CommentModel AMD */
 define([
-        'jquery',
-        'underscore',
-        'backbone',
-        'js/app/model/CommentModel'
-        ], function($, _, Backbone, CommentModel){
+    'jquery',
+    'underscore',
+    'backbone',
+    'commentmodel'
+], function($, _, Backbone, CommentModel) {
 
     /* CommentModel */
     var CommentCollection = Backbone.Collection.extend(

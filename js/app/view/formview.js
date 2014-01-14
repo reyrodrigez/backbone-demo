@@ -7,10 +7,12 @@
  */
   /* FormView AMD */
 define([
-        'jquery',
-        'underscore',
-        'backbone'
-        ], function($, _, Backbone, CommentModel){
+    'jquery',
+    'underscore',
+    'backbone',
+    'commentmodel'
+], function($, _, Backbone, CommentModel) {
+    "use strict";
 
     /* Mustache, CommentView, CommentModel */
     var FormView = Backbone.View.extend(
@@ -23,13 +25,13 @@ define([
              * @type String
              */
             tagName: 'div',
-        
+
             /**
              * CSS class name of the container element
              * @type String
              */
             className: 'commentform',
-            
+
             /**
              * The map of delegated event handlers
              * @type Object
@@ -38,7 +40,7 @@ define([
                 'click .submit': 'submit',
                 'click .cancel': 'cancel'
             },
-            
+
             /**
              * View init method, subscribing to model events
              */
@@ -46,7 +48,7 @@ define([
                 this.model.on('change', this.updateFields, this);
                 this.model.on('destroy', this.remove, this);
             },
-            
+
             /**
              * Render form element from a template using Mustache
              * @returns {FormView} Returns the view instance itself, to allow chaining view commands.
@@ -56,8 +58,7 @@ define([
                 /* Close any open comment form by clicking cancel */
                 $('.cancel').trigger('click');
                 /* If the confirmation prevents the comment form to get disappeared stop propagation */
-                if ($('.cancel').length>0)
-                    return false;
+                if ($('.cancel').length > 0) return false;
 
                 var template = $('#form-template').text();
                 var template_vars = {

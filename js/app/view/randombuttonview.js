@@ -8,11 +8,12 @@
 
 /* CommentModel AMD */
 define([
-        'jquery',
-        'underscore',
-        'backbone',
-        'js/app/model/CommentModel'
-        ], function($, _, Backbone, CommentModel){
+    'jquery',
+    'underscore',
+    'backbone',
+    'commentmodel'
+], function($, _, Backbone, CommentModel){
+    "use strict";
 
     /* CommentModel, FormView */
     var RandomButtonView = Backbone.View.extend(
@@ -25,7 +26,7 @@ define([
             events: {
                 'click': 'createComment'
             },
-            
+
             /**
              * Initialize view, make sure button has a comment collection to work with
              */
@@ -34,7 +35,7 @@ define([
                     throw 'NoCollectionDefined';
                 }
             },
-            
+
             /**
              * Click event handler that creates 5 new comment models with random texts
              * @returns {Boolean} Returns false to stop propagation

@@ -9,11 +9,12 @@
 
  /* CommentModel AMD */
 define([
-        'jquery',
-        'underscore',
-        'backbone'
-        ], function($, _, Backbone){
+    'jquery',
+    'underscore',
+    'backbone'
+], function($, _, Backbone) {
     /* CommentModel */
+    "use strict";
     var CommentModel = Backbone.Model.extend(
     /** @lends CommentModel.prototype */
         {

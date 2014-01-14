@@ -11,53 +11,51 @@
  * @author Bodnar Istvan <istvan@gawker.com>
  */
 
-/* App AMD */
 define([
-        'jquery',
-        'underscore',
-        'backbone',
-        'js/app/model/CommentCollection',
-        'js/app/view/listview',
-        'js/app/view/newbuttonview',
-        'js/app/view/randombuttonview'
-    ], function($, _, Backbone, CommentCollection, CommentlistView, NewButtonView, RandomButtonView){
-
+    'jquery',
+    'underscore',
+    'backbone',
+    'commentcollection',
+    'listview',
+    'newbuttonview',
+    'randombuttonview'
+], function($, _, Backbone, CommentCollection, CommentlistView, NewButtonView, RandomButtonView) {
+    "use strict";
     /*CommentCollection, CommentlistView, FormView, NewButtonView, RandomButtonView */
-var App = Backbone.View.extend(
-/** @lends App.prototype */
-    {
+    var App = Backbone.View.extend(
+    /** @lends App.prototype */
+            {
 
-        el: "#application",
-        /**
-         * Initialize new application instance
-         */
-        initialize: function () {
-            // create collection with dummy data to pre-render
-            var collection = new CommentCollection([
-              {
-                "author": "author #1", 
-                "text": "prerender lorem ipsum #1"
-              },
-              {
-                "author": "author #2", 
-                "text": "prerender lorem ipsum #2"
-              }
-            ]);
-        
-            // bind the NewButtonView to the already rendered 'newcomment' DOM element, we'll need to know the
-            // collection to work with so FormView can insert the new comment properly
-            new NewButtonView({collection: collection, el: this.$el.find('.newcomment')});
-            
-            // bind the RandomButtonView to the already rendered 'randomcomment' DOM element
-            new RandomButtonView({collection: collection, el: this.$el.find('.randomcomment')});
+                el: "#application",
+                /**
+                 * Initialize new application instance
+                 */
+                initialize: function () {
+                    // create collection with dummy data to pre-render
+                    var collection = new CommentCollection([
+                            {
+                                "author": "author #1",
+                                "text": "prerender lorem ipsum #1"
+                            },
+                            {
+                                "author": "author #2",
+                                "text": "prerender lorem ipsum #2"
+                            }
+                        ]);
 
-            // create comment list view, assign our empty collection
-            var listview = new CommentlistView({collection: collection, el: this.$el.find('.commentlist')});
-            listview.render();
-        }
-    }
-);
+                    // bind the NewButtonView to the already rendered 'newcomment' DOM element, we'll need to know the
+                    // collection to work with so FormView can insert the new comment properly
+                    new NewButtonView({collection: collection, el: this.$el.find('.newcomment')});
 
+                    // bind the RandomButtonView to the already rendered 'randomcomment' DOM element
+                    new RandomButtonView({collection: collection, el: this.$el.find('.randomcomment')});
+
+                    // create comment list view, assign our empty collection
+                    var listview = new CommentlistView({collection: collection, el: this.$el.find('.commentlist')});
+                    listview.render();
+                }
+            }
+        );
     return App;
 });
 
@@ -93,5 +91,3 @@ var App = Backbone.View.extend(
  * By default all views extend Backbone.View
  * @link http://documentcloud.github.com/backbone/
  */
-
- 
