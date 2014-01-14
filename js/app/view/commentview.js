@@ -18,7 +18,7 @@ define([
 ], function($, _, Backbone, FormView) {
     "use strict";
 
-    /* Mustache, FormView */
+    /* FormView */
     var CommentView = Backbone.View.extend(
     /** @lends CommentView.prototype */
         {

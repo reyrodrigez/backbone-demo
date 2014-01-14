@@ -11,10 +11,9 @@ define([
     'underscore',
     'backbone',
     'commentmodel'
-], function($, _, Backbone, CommentModel) {
+], function($, _, Backbone) {
     "use strict";
 
-    /* Mustache, CommentView, CommentModel */
     var FormView = Backbone.View.extend(
     /** @lends FormView.prototype */
         {
