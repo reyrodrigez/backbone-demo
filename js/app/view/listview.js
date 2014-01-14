@@ -7,7 +7,7 @@
  * @author Bodnar Istvan <istvan@gawker.com>
  */
 
- /* CommentlistView module wrapper */
+// start uisng AMD format su. main.js
 define([
     'jquery',
     'underscore',
@@ -15,9 +15,8 @@ define([
     'commentview'
 ], function($, _, Backbone, CommentView) {
     "use strict";
-
-    /* CommentlistView */
-    var CommentlistView = Backbone.View.extend(
+    
+    Main.View.CommentlistView = Backbone.View.extend(
     /** @lends CommentlistView.prototype */
         {
             /**
@@ -49,7 +48,7 @@ define([
              * @returns {CommentlistView} Returns the view instance itself, to allow chaining view commands.
              */
             add: function(item) {
-                var commentview = new CommentView({
+                var commentview = new Main.View.CommentView({
                     model: item
                 });
 
@@ -59,5 +58,5 @@ define([
             }
         }
     );
-    return CommentlistView;
+    return Main.View.CommentlistView;
 });

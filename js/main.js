@@ -1,3 +1,6 @@
+// requireJS configuration using shim
+// http://requirejs.org/docs/api.html#config-shim
+
 requirejs.config({
     'baseUrl': '',
     'paths': {
@@ -32,7 +35,14 @@ requirejs.config({
         }
     }
 });
-
-require(['jquery', 'underscore', 'backbone', 'mustache', 'app'], function($, _, Backbone, Mustache, App) {
-    var app = new App();
+// wrapper object to prevent global namespace pollution 
+var Main = {
+        View: {},
+        Model: {},
+        Collection: {}
+    };
+// Request App and initialize
+require(['app'], function(App) {
+    "use strict";
+    Main.app = new Main.View.App();
 });

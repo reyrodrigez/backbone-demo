@@ -6,7 +6,7 @@
  * @author Bodnar Istvan <istvan@gawker.com>
  */
 
-  /* NewButtonView AMD */
+// start uisng AMD format su. main.js
 define([
     'jquery',
     'underscore',
@@ -16,8 +16,7 @@ define([
 ], function($, _, Backbone, CommentModel, FormView) {
     "use strict";
 
-    /* CommentModel, FormView */
-    var NewButtonView = Backbone.View.extend(
+    Main.View.NewButtonView = Backbone.View.extend(
     /** @lends NewButtonView.prototype */
         {
             /**
@@ -44,10 +43,10 @@ define([
              */
             createComment: function () {
                 // create new comment model
-                var comment = new CommentModel({});
+                var comment = new Main.Model.CommentModel({});
 
                 // render form view right after new button
-                var formview = new FormView({model: comment});
+                var formview = new Main.View.FormView({model: comment});
                 this.$el.after(formview.render().$el);
 
                 // add saved model to collection after form was submitted successfully
@@ -67,5 +66,5 @@ define([
 
         }
     );
-    return NewButtonView;
+    return Main.View.NewButtonView;
 });

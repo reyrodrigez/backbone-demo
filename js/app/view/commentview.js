@@ -9,17 +9,17 @@
  * @author Bodnar Istvan <istvan@gawker.com>
  */
 
- /* CommentView module wrapper */
+// start uisng AMD format su. main.js
 define([
     'jquery',
     'underscore',
     'backbone',
+    'mustache',
     'formview'
-], function($, _, Backbone, FormView) {
+], function($, _, Backbone, Mustache, FormView) {
     "use strict";
 
-    /* FormView */
-    var CommentView = Backbone.View.extend(
+    Main.View.CommentView = Backbone.View.extend(
     /** @lends CommentView.prototype */
         {
             /**
@@ -78,7 +78,7 @@ define([
              */
             edit: function () {
                 // create new FormView instance to edit the comment
-                var formview = new FormView({model: this.model});
+                var formview = new Main.View.FormView({model: this.model});
 
                 // insert FormView instance after the comment container
                 this.$el.after(formview.render().$el);
@@ -92,6 +92,7 @@ define([
              * Delete button click handler
              * @returns {Boolean} Returns false to stop propagation
              */
+             //renamed from delete
             deleteModel: function () {
                 // delete model from memory
                 this.model.id = undefined;
@@ -140,5 +141,5 @@ define([
             }
         }
     );
-    return CommentView;
+    return Main.View.CommentView;
 });

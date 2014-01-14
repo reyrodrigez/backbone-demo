@@ -1,16 +1,17 @@
 /**
  * Application controller view
- * Starts application, inits a new CommentCollection collection, assigns the empty list to 
+ * Starts application, inits a new CommentCollection collection, assigns the list with dummy data to 
  * a CommentlistView controller, also inits a NewButtonView instance to handle new comment insertion.
  * 
- * Check index.html to find the place where App is initialized, it's right after the container
- * DOM node is rendered.
+ * Check main.js to find the place where App is initialized
  *
  * @class App
  * @extends Backbone.View
  * @author Bodnar Istvan <istvan@gawker.com>
  */
 
+
+// start uisng AMD format su. main.js
 define([
     'jquery',
     'underscore',
@@ -21,8 +22,8 @@ define([
     'randombuttonview'
 ], function($, _, Backbone, CommentCollection, CommentlistView, NewButtonView, RandomButtonView) {
     "use strict";
-    /*CommentCollection, CommentlistView, FormView, NewButtonView, RandomButtonView */
-    var App = Backbone.View.extend(
+
+    Main.View.App = Backbone.View.extend(
     /** @lends App.prototype */
             {
 
@@ -31,7 +32,7 @@ define([
                  * Initialize new application instance
                  */
                 initialize: function () {
-                    // create collection with dummy data to pre-render
+                    // create new CommentCollection with dummy data to pre-render
                     var collection = new CommentCollection([
                             {
                                 "author": "author #1",
@@ -45,18 +46,20 @@ define([
 
                     // bind the NewButtonView to the already rendered 'newcomment' DOM element, we'll need to know the
                     // collection to work with so FormView can insert the new comment properly
-                    new NewButtonView({collection: collection, el: this.$el.find('.newcomment')});
+                    //assing object to variable in case we need to use it later
+                    var newButton = new Main.View.NewButtonView({collection: collection, el: this.$el.find('.newcomment')});
 
                     // bind the RandomButtonView to the already rendered 'randomcomment' DOM element
-                    new RandomButtonView({collection: collection, el: this.$el.find('.randomcomment')});
+                    //assing object to variable in case we need to use it later
+                    var randomButton = new Main.View.RandomButtonView({collection: collection, el: this.$el.find('.randomcomment')});
 
                     // create comment list view, assign our empty collection
-                    var listview = new CommentlistView({collection: collection, el: this.$el.find('.commentlist')});
+                    var listview = new Main.View.CommentlistView({collection: collection, el: this.$el.find('.commentlist')});
                     listview.render();
                 }
             }
         );
-    return App;
+    return Main.View.App;
 });
 
 

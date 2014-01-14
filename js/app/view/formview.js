@@ -5,16 +5,15 @@
  * @extends Backbone.View
  * @author Bodnar Istvan <istvan@gawker.com>
  */
-  /* FormView AMD */
+// start uisng AMD format su. main.js
 define([
     'jquery',
     'underscore',
-    'backbone',
-    'commentmodel'
+    'backbone'
 ], function($, _, Backbone) {
     "use strict";
 
-    var FormView = Backbone.View.extend(
+    Main.View.FormView = Backbone.View.extend(
     /** @lends FormView.prototype */
         {
             /**
@@ -142,5 +141,5 @@ define([
             }
         }
     );
-    return FormView;
+    return Main.View.FormView;
 });

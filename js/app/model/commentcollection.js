@@ -7,26 +7,26 @@
  * @author Bodnar Istvan <istvan@gawker.com>
  */
 
-/* CommentModel AMD */
+// start uisng AMD format su. main.js
 define([
     'jquery',
     'underscore',
     'backbone',
     'commentmodel'
 ], function($, _, Backbone, CommentModel) {
+    "use strict";
 
-    /* CommentModel */
-    var CommentCollection = Backbone.Collection.extend(
+    Main.Collection.CommentCollection = Backbone.Collection.extend(
     /** @lends CommentCollection.prototype */
         {
             /**
              * Sets the allowed type of contained models
              * @type Backbone.Model
              */
-            model: CommentModel
+            model: Main.Model.CommentModel
         }
     );
 
-    return CommentCollection;
+    return Main.Collection.CommentCollection;
 
 });

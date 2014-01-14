@@ -6,7 +6,14 @@
  * @author Bodnar Istvan <istvan@gawker.com>
  */
 
-/* CommentModel AMD */
+/**
+ * Random comments creation button
+ *
+ * @class RandomButtonView
+ * @extends Backbone.View
+ */
+
+// start uisng AMD format su. main.js
 define([
     'jquery',
     'underscore',
@@ -15,8 +22,7 @@ define([
 ], function($, _, Backbone, CommentModel){
     "use strict";
 
-    /* CommentModel, FormView */
-    var RandomButtonView = Backbone.View.extend(
+    Main.View.RandomButtonView = Backbone.View.extend(
     /** @lends RandomButtonView.prototype */
         {
             /**
@@ -54,5 +60,5 @@ define([
             }
         }
     );
-    return RandomButtonView;
+    return Main.View.RandomButtonView;
 });

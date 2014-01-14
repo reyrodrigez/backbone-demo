@@ -7,15 +7,16 @@
  * @author Bodnar Istvan <istvan@gawker.com>
  */
 
- /* CommentModel AMD */
+// start uisng AMD format su. main.js
 define([
     'jquery',
     'underscore',
-    'backbone'
-], function($, _, Backbone) {
-    /* CommentModel */
+    'backbone',
+    'app'
+], function($, _, Backbone, App) {
     "use strict";
-    var CommentModel = Backbone.Model.extend(
+
+    Main.Model.CommentModel = Backbone.Model.extend(
     /** @lends CommentModel.prototype */
         {
             /**
@@ -28,5 +29,5 @@ define([
             }
         }
     );
-    return CommentModel;
+    return Main.Model.CommentModel;
 });
